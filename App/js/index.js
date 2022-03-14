@@ -55,33 +55,6 @@ xui.Class('App', 'xui.Module',{
             );
             
             host.ctl_panel11.append(
-                xui.create("xui.UI.Link")
-                .setHost(host,"ctl_link1")
-                .setLeft("2.7555555555555555em")
-                .setTop("33.31111111111111em")
-                .setWidth("12.444444444444445em")
-                .setHeight("1.7777777777777777em")
-                .setCaption("Download source code")
-                .onClick([
-                    {
-                        "desc" : "Action 1",
-                        "type" : "other",
-                        "target" : "url",
-                        "args" : [
-                            "http://www.crossui.com/download.html"
-                        ],
-                        "method" : "open--_blank",
-                        "event" : 1
-                    }
-                ])
-                .setCustomStyle({
-                    "KEY" : {
-                        "font-style" : "italic"
-                    }
-                })
-            );
-            
-            host.ctl_panel11.append(
                 xui.create("xui.UI.StatusButtons")
                 .setHost(host,"ctl_statusbuttons1")
                 .setItems([
@@ -149,44 +122,6 @@ xui.Class('App', 'xui.Module',{
                 .setHeight("4.444444444444445em")
                 .setRight("0.35555555555555557em")
                 .setPanelBgClr("transparent")
-            );
-            
-            host.ctl_pane13.append(
-                xui.create("xui.UI.Label")
-                .setHost(host,"ctl_slabel53")
-                .setLeft("32.888888888888886em")
-                .setTop("2.4em")
-                .setCaption("Powered by ")
-                .setCustomStyle({
-                    "KEY" : {
-                        "font-style" : "italic"
-                    }
-                })
-            );
-            
-            host.ctl_pane13.append(
-                xui.create("xui.UI.Image")
-                .setHost(host,"ctl_image25")
-                .setLeft("39.111111111111114em")
-                .setTop("1.511111111111111em")
-                .setSrc("http://www.crossui.com/img/logo2.png")
-                .onClick([
-                    {
-                        "desc" : "open",
-                        "type" : "other",
-                        "target" : "url",
-                        "args" : [
-                            "http://www.crossui.com"
-                        ],
-                        "method" : "open--_blank",
-                        "event" : 1
-                    }
-                ])
-                .setCustomStyle({
-                    "KEY" : {
-                        "cursor" : "pointer"
-                    }
-                })
             );
             
             host.ctl_pane13.append(
