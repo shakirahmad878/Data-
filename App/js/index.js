@@ -11,27 +11,29 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_list")
+                .setName("api_list")
                 .setQueryURL("{xui.constant.request_url}")
-                .setProxyType("auto")
                 .setQueryArgs({
                     "key" : "orders",
                     "paras" : {
                         "action" : "list"
                     }
                 })
+                .setProxyType("auto")
             );
             
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_del")
+                .setName("api_del")
                 .setQueryURL("{xui.constant.request_url")
-                .setProxyType("auto")
                 .setQueryArgs({
                     "key" : "orders",
                     "paras" : {
                         "action" : "delete"
                     }
                 })
+                .setProxyType("auto")
             );
             
             append(
@@ -42,184 +44,6 @@ xui.Class('App', 'xui.Module',{
                 .setOverflow("overflow-x:hidden;overflow-y:auto")
                 .setCaption("Setup")
                 .setImageClass("xui-uicmd-opt")
-            );
-            
-            host.ctl_panel11.append(
-                xui.create("xui.UI.StatusButtons")
-                .setHost(host,"ctl_statusbuttons1")
-                .setItems([
-                    {
-                        "id" : "info",
-                        "caption" : "Company Information",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-112px 0 "
-                    },
-                    {
-                        "id" : "shipping",
-                        "caption" : "Shipping Methods",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-64px 0 "
-                    },
-                    {
-                        "id" : "payment",
-                        "caption" : "Payment Methods",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-80px 0 "
-                    },
-                    {
-                        "id" : "employee",
-                        "caption" : "Employees",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-16px 0 "
-                    },
-                    {
-                        "id" : "prd",
-                        "caption" : "Products",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-48px 0 "
-                    },
-                    {
-                        "id" : "customer",
-                        "caption" : "Customers",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-32px 0 "
-                    },
-                    {
-                        "id" : "feedback",
-                        "caption" : "Provide Feedback",
-                        "itemStyle" : "font-weight:bold",
-                        "image" : "{/}img/app.png",
-                        "imagePos" : "-96px 0 "
-                    }
-                ])
-                .setLeft("0.5333333333333333em")
-                .setTop("0.8888888888888888em")
-                .setWidth("15.2em")
-                .setHeight("22.22222222222222em")
-                .setSelMode("none")
-                .setBorderType("none")
-                .setItemMargin("2px 4px")
-                .setItemWidth("13.333333333333334em")
-                .setValue("")
-                .onClick([
-                    {
-                        "desc" : "info",
-                        "type" : "page",
-                        "target" : "App.companyInfo",
-                        "args" : [ ],
-                        "method" : "show",
-                        "event" : 2,
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "info"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "shipping",
-                        "type" : "page",
-                        "target" : "App.shippingMethods",
-                        "args" : [ ],
-                        "method" : "show",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "shipping"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "payment",
-                        "type" : "page",
-                        "target" : "App.paymentMethods",
-                        "args" : [ ],
-                        "method" : "show",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "payment"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "employee",
-                        "type" : "page",
-                        "target" : "App.employees",
-                        "args" : [ ],
-                        "method" : "show",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "employee"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "prd",
-                        "type" : "page",
-                        "target" : "App.products",
-                        "args" : [ ],
-                        "method" : "show",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "prd"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "customer",
-                        "type" : "page",
-                        "target" : "App.customers",
-                        "args" : [ ],
-                        "method" : "show",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "customer"
-                            }
-                        ],
-                        "return" : false
-                    },
-                    {
-                        "desc" : "feedback",
-                        "type" : "other",
-                        "target" : "url",
-                        "args" : [
-                            "support@crossui.com",
-                            {
-                                "subject" : "Feedback on CrossUI Order Management"
-                            }
-                        ],
-                        "method" : "mailTo",
-                        "conditions" : [
-                            {
-                                "left" : "{args[1].id}",
-                                "symbol" : "=",
-                                "right" : "feedback"
-                            }
-                        ],
-                        "timeout" : 0,
-                        "return" : false
-                    }
-                ])
-                .setCustomStyle({
-                    "ITEM" : {
-                        "text-align" : "left"
-                    }
-                })
             );
             
             host.ctl_panel11.append(
@@ -253,6 +77,58 @@ xui.Class('App', 'xui.Module',{
                 .setCustomStyle({
                     "KEY" : {
                         "font-style" : "italic"
+                    }
+                })
+            );
+            
+            host.ctl_panel11.append(
+                xui.create("xui.UI.StatusButtons")
+                .setHost(host,"ctl_statusbuttons1")
+                .setItems([
+                    {
+                        "id" : "info",
+                        "caption" : "Shop Information",
+                        "image" : "{/}img/app.png",
+                        "imagePos" : "-112px 0 "
+                    },
+                    {
+                        "id" : "payment",
+                        "caption" : "Payment Methods",
+                        "image" : "{/}img/app.png",
+                        "imagePos" : "-80px 0 "
+                    },
+                    {
+                        "id" : "employee",
+                        "caption" : "Employees",
+                        "image" : "{/}img/app.png",
+                        "imagePos" : "-16px 0 "
+                    },
+                    {
+                        "id" : "prd",
+                        "caption" : "Products",
+                        "image" : "{/}img/app.png",
+                        "imagePos" : "-48px 0 "
+                    },
+                    {
+                        "id" : "feedback",
+                        "caption" : "Provide Feedback",
+                        "itemStyle" : "font-weight:bold",
+                        "image" : "{/}img/app.png",
+                        "imagePos" : "-96px 0 "
+                    }
+                ])
+                .setLeft("0.5333333333333333em")
+                .setTop("0.8888888888888888em")
+                .setWidth("15.2em")
+                .setHeight("22.22222222222222em")
+                .setSelMode("none")
+                .setBorderType("none")
+                .setItemMargin("2px 4px")
+                .setItemWidth("13.333333333333334em")
+                .setValue("")
+                .setCustomStyle({
+                    "ITEM" : {
+                        "text-align" : "left"
                     }
                 })
             );
@@ -442,21 +318,8 @@ xui.Class('App', 'xui.Module',{
                                         "type" : "input"
                                     },
                                     {
-                                        "id" : "CompanyName",
-                                        "caption" : "Company Name",
-                                        "width" : "8em",
-                                        "type" : "input"
-                                    },
-                                    {
-                                        "id" : "EmployeeID",
-                                        "caption" : "EmployeeID",
-                                        "width" : "3em",
-                                        "hidden" : true,
-                                        "type" : "input"
-                                    },
-                                    {
-                                        "id" : "EmployeeName",
-                                        "caption" : "Employee Name",
+                                        "id" : "ShopName",
+                                        "caption" : "Shop Name",
                                         "width" : "8em",
                                         "type" : "input"
                                     },
@@ -473,42 +336,10 @@ xui.Class('App', 'xui.Module',{
                                         "type" : "number"
                                     },
                                     {
-                                        "id" : "ShipDate",
-                                        "caption" : "Ship Date",
-                                        "width" : "8em",
-                                        "type" : "date"
-                                    },
-                                    {
-                                        "id" : "ShippingMethodID",
-                                        "caption" : "ShippingMethodID",
-                                        "width" : "8em",
-                                        "hidden" : true,
-                                        "type" : "input"
-                                    },
-                                    {
-                                        "id" : "ShippingMethod",
-                                        "caption" : "Shipping Method",
-                                        "width" : "8em",
-                                        "type" : "input"
-                                    },
-                                    {
-                                        "id" : "PaymentMethodID",
-                                        "caption" : "PaymentMethodID",
-                                        "width" : "8em",
-                                        "hidden" : true,
-                                        "type" : "input"
-                                    },
-                                    {
                                         "id" : "PaymentMethod",
                                         "caption" : "Payment Method",
                                         "width" : "8em",
                                         "type" : "input"
-                                    },
-                                    {
-                                        "id" : "FreightCharge",
-                                        "caption" : "Freight Charge",
-                                        "width" : "8em",
-                                        "type" : "currency"
                                     },
                                     {
                                         "id" : "Taxes",
@@ -521,12 +352,6 @@ xui.Class('App', 'xui.Module',{
                                         "caption" : "Payment Received",
                                         "width" : "8em",
                                         "type" : "checkbox"
-                                    },
-                                    {
-                                        "id" : "Comment",
-                                        "caption" : "Comment",
-                                        "width" : "12em",
-                                        "type" : "textarea"
                                     }
                                 ],
                                 "uidColumn" : "OrderID",
